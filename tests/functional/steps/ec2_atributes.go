@@ -8,12 +8,12 @@ import (
 	"github.com/dougmendes/gondalf/tests/functional/drivers"
 )
 
-func Aec2region(ctx context.Context, instanceRegion string) (context.Context, error) {
+func ARegion(ctx context.Context, instanceRegion string) (context.Context, error) {
 	childCtx := context.WithValue(ctx, instanceRegionKey, instanceRegion)
 	return childCtx, nil
 }
 
-func TheUserRequestAllEc2FromThatRegion(ctx context.Context) (context.Context, error) {
+func TheUserRequestAllInstancesFromThatRegion(ctx context.Context) (context.Context, error) {
 	instanceRegion := ctx.Value(instanceRegionKey).(string)
 	api := ctx.Value(DriverContextKey).(*drivers.APIDriver)
 	result, err := api.GetAllInstances(instanceRegion)
@@ -25,6 +25,6 @@ func TheUserRequestAllEc2FromThatRegion(ctx context.Context) (context.Context, e
 	return context.WithValue(ctx, listOfInstancesKey, result), nil
 }
 
-func RespondWithAListOfAllEc2(arg1 int) error {
+func RespondWithAListOfAllInstances(arg1 int) error {
 	return godog.ErrPending
 }

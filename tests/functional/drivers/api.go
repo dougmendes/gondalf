@@ -34,11 +34,11 @@ func (d *APIDriver) GetAllInstances(region string) (InstanceList, error) {
 }
 
 type InstanceList struct {
-	Instances []Instance `json:instance_list`
+	Instances []Instance `json:"instance_list"`
 }
 
 type Instance struct {
-	name   string `json:name`
-	region string `json:region`
-	family string `json:family`
+	Name   string `json:"name"`
+	Region string `json:"region"`
+	Family string `json:"family"`
 }
