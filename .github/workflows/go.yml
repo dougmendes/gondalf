@@ -10,7 +10,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -34,5 +33,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "testgolangheroku"
+          heroku_app_name: "gondalf"
           heroku_email: douglasleomendes@hotmail.com
