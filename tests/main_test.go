@@ -16,7 +16,7 @@ func SetUpRouter() *gin.Engine {
 	return router
 }
 func TestMain(t *testing.T) {
-	mockResponse := `{"message":"pong"}`
+	mockResponse := `{"message":"esse é um teste de deploy"}`
 	r := SetUpRouter()
 	r.GET("/ping", Pong)
 	req, _ := http.NewRequest("GET", "/ping", nil)

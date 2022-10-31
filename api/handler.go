@@ -8,7 +8,7 @@ import (
 
 func Pong(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
-		"message": "pong",
+		"message": "esse é um teste de deploy",
 	})
 
 }
