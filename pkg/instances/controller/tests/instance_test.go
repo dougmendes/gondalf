@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	. "github.com/dougmendes/gondalf/api"
+	. "github.com/dougmendes/gondalf/pkg/instances/controller"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
