@@ -11,6 +11,13 @@ on:
 
 jobs:
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Running tests
+      uses: actions/setup-go@v3
+      run: go test -v ./tests
   build:
     runs-on: ubuntu-latest
     steps:
@@ -23,9 +30,7 @@ jobs:
 
     - name: Build
       run: go build -v ./...
-
-    - name: Test
-      run: go test -v ./tests
+      
   deploy:
     needs: build
     runs-on: ubuntu-latest
