@@ -25,6 +25,7 @@ jobs:
       run: go test -v ./tests
 
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
