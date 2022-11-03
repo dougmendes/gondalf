@@ -25,6 +25,6 @@ func TestRegister(t *testing.T) {
 
 	responseData, _ := ioutil.ReadAll(w.Body)
 	assert.Equal(t, mockResponse, string(responseData))
-	assert.Equal(t, http.StatusOK, w.Code)
+	assert.Equal(t, http.StatusNotImplemented, w.Code)
 
 }
