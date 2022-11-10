@@ -4,27 +4,28 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"testing"
 
 	. "github.com/dougmendes/gondalf/pkg/authentication/controller"
 	"github.com/gin-gonic/gin"
-	"github.com/stretchr/testify/assert"
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 )
 
-func SetUpRouter() *gin.Engine {
-	router := gin.Default()
-	return router
-}
-func TestRegister(t *testing.T) {
-	mockResponse := `{"message":"not implement yet"}`
-	r := SetUpRouter()
-	r.POST("/register", Register)
-	req, _ := http.NewRequest("POST", "/register", nil)
-	w := httptest.NewRecorder()
-	r.ServeHTTP(w, req)
+var _ = Describe("Ping", func() {
+	When("the user send a ping", func() {
+		r := gin.Default()
+		w := httptest.NewRecorder()
+		BeforeEach(func() {
+			r.GET("/ping", Pong)
+			req, _ := http.NewRequest("GET", "/ping", nil)
+			r.ServeHTTP(w, req)
+		})
+		It("respond with pong", func() {
 
-	responseData, _ := ioutil.ReadAll(w.Body)
-	assert.Equal(t, mockResponse, string(responseData))
-	assert.Equal(t, http.StatusNotImplemented, w.Code)
-
-}
+			mockResponse := `{"message":"pong!!"}`
+			responseData, _ := ioutil.ReadAll(w.Body)
+			Expect(string(responseData)).To(Equal(mockResponse))
+			Expect(w.Code).To(Equal(200))
+		})
+	})
+})
