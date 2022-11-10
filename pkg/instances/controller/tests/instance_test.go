@@ -15,7 +15,7 @@ func SetUpRouter() *gin.Engine {
 	router := gin.Default()
 	return router
 }
-func TestMain(t *testing.T) {
+func TestInstance(t *testing.T) {
 	mockResponse := `{"message":"pong!!"}`
 	r := SetUpRouter()
 	r.GET("/ping", Pong)
